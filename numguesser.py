@@ -33,12 +33,49 @@ def main ():
     highnum = checkNum(highnum, "Please enter your high, non-negative integer: ")
     score = checkNum(score,"Please enter your starting score: ")
 
-    # while True:
-    #     if (score <= 0):
-    #         print("No more points! Come back again.")
-    #         break
-    #     randomnumber = random.randint(lownum,highnum)
+    while True:
+        if (highnum < lownum):
+            print("Your high number is lower than your low number! Please try again.")
+            highnum = checkNum(highnum, "Please enter your high, non-negative integer: ")
+        else:
+            break
 
+    while True:
+        if (score <= 0):
+            print("No more points! Come back again.")
+            break
+        randomnumber = random.randint(lownum,highnum)
+        scoreReduction = score % 10
+        while True:
+            try:
+                userguess = int(input("Please enter your guess: "))
+                if (userguess > randomnumber):
+                    print("Too high! Try again.")
+                    score = score - scoreReduction
+                elif (userguess < randomnumber):
+                    print("Too low! Try again.")
+                    score = score - scoreReduction
+                else:
+                    print("You got it!")
+                    break
+            except ValueError:
+                print("Invalid input.")
+        print("Loop exited.")
+        print("Your score is: " + str(score))
+        # while True:
+        #     goAgain = str(input("Would you like to play again? Enter a y or n: "))
+        #         if(goAgain.lower == "y"):
+        #             continue
+        #         elif(goAgain.lower == "n"):
+        #             print("Thanks for playing!")
+        #             break
+        #         else("")
+        
+        # finally:
+        #     continue
+
+        
+        
         
         
 
